@@ -49,14 +49,12 @@ function addRecipesToDocument(recipes) {
   //            create a <recipe-card> element for each one, and populate
   //            each <recipe-card> with that recipe data using element.data = ...
   //            Append each element to <main>
-  var recipeArray = getRecipesFromStorage();
-
   for(let i = 0; i < recipes.length; i++)
   {
-    const recipe = document.createElement('recipe-card');
+    const recipeCard = document.createElement('recipe-card');
     //console.log(recipes[i]);
-    recipe.data = recipes[i];
-    main.append(recipe);
+    recipeCard.data = recipes[i];
+    main.append(recipeCard);
   }
 }
 
@@ -71,7 +69,7 @@ function saveRecipesToStorage(recipes) {
   //            header. It is possible in only a single line, but should
   //            be no more than a few lines.
 
-  
+
 }
 
 /**
