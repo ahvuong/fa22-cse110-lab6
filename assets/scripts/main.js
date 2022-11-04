@@ -77,16 +77,14 @@ function saveRecipesToStorage(recipes) {
  * <button>.
  */
 function initFormHandler() {
-
+  const main = document.querySelector('main');
   // B2. TODO - Get a reference to the <form> element
   const form = document.querySelector('form');
 
   // B3. TODO - Add an event listener for the 'submit' event, which fires when the
   //            submit button is clicked
   form.addEventListener('submit', (e) => {
-    //console.log('pressed');
-  //e.preventDefault();
-
+    
   // Steps B4-B9 will occur inside the event listener from step B3
   // B4. TODO - Create a new FormData object from the <form> element reference above
   let formData = new FormData(form);
@@ -98,14 +96,8 @@ function initFormHandler() {
 
   for(const pair of formData.entries())
   {
-    //recipeObject += `${pair[0]}: ${pair[1]}`;
     recipeObject[pair[0]] = pair[1];
   }
-
-  let array = [];
-  console.log(array.push(recipeObject));
-
-  //formData.entries(recipeObject).map(([k, v])=> ({key: k, value: v}));
 
   // B6. TODO - Create a new <recipe-card> element
   const newRecipeCard = document.createElement('recipe-card');
@@ -114,7 +106,6 @@ function initFormHandler() {
   newRecipeCard.data = recipeObject;
 
   // B8. TODO - Append this new <recipe-card> to <main>
-  const main = document.querySelector('main');
   main.append(newRecipeCard);
 
   // B9. TODO - Get the recipes array from localStorage, add this new recipe to it, and
@@ -122,7 +113,6 @@ function initFormHandler() {
   let recipes = getRecipesFromStorage();
   recipes.push(recipeObject);
   saveRecipesToStorage(recipes);
-
   });
 
   // B10. TODO - Get a reference to the "Clear Local Storage" button
@@ -136,6 +126,7 @@ function initFormHandler() {
   localStorage.clear();
 
   // B13. TODO - Delete the contents of <main>
-  main.innerHTLM =` `;
+  main.innerHTML= ` `;
+  //main.replaceChildren();
   });
 }
